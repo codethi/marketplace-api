@@ -15,7 +15,6 @@ export class SigninService {
     if (!user) throw new Error("Email or password invalid");
 
     const passwordOk = await bcrypt.compare(data.password, user.password);
-    console.log(passwordOk);
     if (!passwordOk) throw new Error("Email or password invalid");
 
     return this.authRepositories.generateToken(user._id);
