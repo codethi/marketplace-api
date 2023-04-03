@@ -11,4 +11,8 @@ export class UserRepositoriesMongoDb implements IUserRepositories {
     const user = await UserSchema.findOne({ email });
     return user;
   }
+
+  async findAll(limit: number, offset: number): Promise<User[]> {
+    return await UserSchema.find().select(["-password", "-__v"]).limit(limit).skip(offset);
+  }
 }
