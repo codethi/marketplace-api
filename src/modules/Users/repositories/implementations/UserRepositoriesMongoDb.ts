@@ -1,3 +1,4 @@
+import { Product } from "modules/Products/entities/Product";
 import { Address } from "modules/Users/entities/Address";
 import { User } from "modules/Users/entities/User";
 import UserSchema from "modules/Users/schemas/UserSchema";
@@ -78,6 +79,34 @@ export class UserRepositoriesMongoDb implements IUserRepositories {
       },
       {
         $push: {
+          favorite_products: {
+            _id: productId,
+          },
+        },
+      }
+    );
+  }
+
+  async findFavoriteProductById(
+    productId: string,
+    userId: string
+  ): Promise<Product | null> {
+    return await UserSchema.findOne(
+      { _id: userId, "favorite_products._id": productId },
+      { "favorite_products.$": 1 }
+    );
+  }
+
+  async removeFavoriteProduct(
+    userId: string,
+    productId: string
+  ): Promise<void> {
+    await UserSchema.findOneAndUpdate(
+      {
+        _id: userId,
+      },
+      {
+        $pull: {
           favorite_products: {
             _id: productId,
           },

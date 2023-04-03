@@ -1,3 +1,4 @@
+import { Product } from "modules/Products/entities/Product";
 import { Address } from "../entities/Address";
 import { User } from "../entities/User";
 
@@ -12,4 +13,9 @@ export interface IUserRepositories {
   removeAddress(userId: string, addressId: string): Promise<void>;
   findAddressById(addressId: string, userId: string): Promise<Address | null>;
   addFavoriteProduct(userId: string, productId: string): Promise<void>;
+  findFavoriteProductById(
+    productId: string,
+    userId: string
+  ): Promise<Product | null>;
+  removeFavoriteProduct(userId: string, productId: string): Promise<void>;
 }
