@@ -1,6 +1,7 @@
 import { Router } from "express";
 import authMiddleware from "middlewares/authMiddleware";
 import paginationMiddleware from "middlewares/paginationMiddleware";
+import addAddressController from "modules/Users/useCases/addAddress/addAddressController";
 import createController from "modules/Users/useCases/create/createController";
 import deleteController from "modules/Users/useCases/delete/deleteController";
 import findByIdController from "modules/Users/useCases/finById/findByIdController";
@@ -16,5 +17,6 @@ userRoutes.get("/", paginationMiddleware.execute, findAllController.handle);
 userRoutes.get("/:id", findByIdController.handle);
 userRoutes.patch("/", updateController.handle);
 userRoutes.delete("/", deleteController.handle);
+userRoutes.post("/add-address", addAddressController.handle);
 
 export default userRoutes;
