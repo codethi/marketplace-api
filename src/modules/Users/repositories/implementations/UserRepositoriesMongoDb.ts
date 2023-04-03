@@ -45,4 +45,29 @@ export class UserRepositoriesMongoDb implements IUserRepositories {
       }
     );
   }
+
+  async findAddressById(
+    addressId: string,
+    userId: string
+  ): Promise<Address | null> {
+    return await UserSchema.findOne(
+      { _id: userId, "addresses._id": addressId },
+      { "addresses.$": 1 }
+    );
+  }
+
+  async removeAddress(userId: string, addressId: string): Promise<void> {
+    await UserSchema.findOneAndUpdate(
+      {
+        _id: userId,
+      },
+      {
+        $pull: {
+          addresses: {
+            _id: addressId,
+          },
+        },
+      }
+    );
+  }
 }
