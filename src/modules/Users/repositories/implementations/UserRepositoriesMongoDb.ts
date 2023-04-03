@@ -13,6 +13,14 @@ export class UserRepositoriesMongoDb implements IUserRepositories {
   }
 
   async findAll(limit: number, offset: number): Promise<User[]> {
-    return await UserSchema.find().select(["-password", "-__v"]).limit(limit).skip(offset);
+    return await UserSchema.find()
+      .select(["-password", "-__v"])
+      .limit(limit)
+      .skip(offset);
+  }
+
+  async findById(id: string): Promise<User | null> {
+    const user = await UserSchema.findById(id).select(["-password", "-__v"]);
+    return user;
   }
 }
