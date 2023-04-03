@@ -23,4 +23,8 @@ export class UserRepositoriesMongoDb implements IUserRepositories {
     const user = await UserSchema.findById(id).select(["-password", "-__v"]);
     return user;
   }
+
+  async upadte(id: string, data: User): Promise<void> {
+    await UserSchema.findByIdAndUpdate(id, data);
+  }
 }
