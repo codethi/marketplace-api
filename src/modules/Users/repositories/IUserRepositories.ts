@@ -11,4 +11,5 @@ export interface IUserRepositories {
   addNewAddress(userId: string, address: Address): Promise<void>;
   removeAddress(userId: string, addressId: string): Promise<void>;
   findAddressById(addressId: string, userId: string): Promise<Address | null>;
+  addFavoriteProduct(userId: string, productId: string): Promise<void>;
 }
