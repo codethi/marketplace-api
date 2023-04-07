@@ -3,6 +3,10 @@ import { IUserRepositories } from "../../modules/Users/repositories/IUserReposit
 import { container } from "tsyringe";
 import { IAuthRepositories } from "modules/Auth/repositpries/IAuthRepositories";
 import { AuthRepositoriesMongoDb } from "modules/Auth/repositpries/implementations/AuthRepositoriesMongoDb";
+import { ICategoriesRepository } from "modules/Categories/repositories/ICategoriesRepository";
+import { CategoriesRepository } from "modules/Categories/repositories/implementations/CategoriesRepository";
+import { IProductRepository } from "modules/Products/repositories/IProductRepository";
+import { ProductRepository } from "modules/Products/repositories/implementations/ProductRepository";
 
 container.registerSingleton<IUserRepositories>(
   "UserRepositories",
@@ -12,4 +16,14 @@ container.registerSingleton<IUserRepositories>(
 container.registerSingleton<IAuthRepositories>(
   "AuthRepositories",
   AuthRepositoriesMongoDb
+);
+
+container.registerSingleton<ICategoriesRepository>(
+  "CategoriesRepository",
+  CategoriesRepository
+);
+
+container.registerSingleton<IProductRepository>(
+  "ProductRepository",
+  ProductRepository
 );
