@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { ConflitError } from "helpers/errors/apiErrors";
+import { ConflictError } from "helpers/errors/apiErrors";
 
 class ValidateSchemma {
   execute(schema: any) {
@@ -7,7 +7,7 @@ class ValidateSchemma {
       const { error } = schema.validate(req.body, { abortEarly: false });
       if (error) {
         const errors = error?.details.map((detail: any) => detail.message);
-        throw new ConflitError(errors);
+        throw new ConflictError(errors);
       }
 
       next();
