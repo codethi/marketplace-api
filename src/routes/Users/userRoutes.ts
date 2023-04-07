@@ -28,9 +28,7 @@ userRoutes.post(
   validateSchemma.execute(UserSchemaJoi),
   createController.handle
 );
-
 userRoutes.use(authMiddleware.execute);
-
 userRoutes.get("/", paginationMiddleware.execute, findAllController.handle);
 userRoutes.get("/:id", findByIdController.handle);
 userRoutes.patch("/", updateController.handle);
@@ -49,13 +47,12 @@ userRoutes.delete(
   "/remove-favorite-product/:productId",
   removeFavoriteProductController.handle
 );
-
 userRoutes.patch(
   "/avatar",
   uploadAvatar.single("avatar"),
   updateAvatarController.handle
 );
 
-userRoutes.get("/avatar/:id", findAvatarUserController.handle)
+userRoutes.get("/avatar/:id", findAvatarUserController.handle);
 
 export default userRoutes;
