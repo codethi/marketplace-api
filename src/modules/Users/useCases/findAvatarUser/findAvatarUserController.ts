@@ -4,14 +4,10 @@ import { FindAvatarUserService } from "./findAvatarUserService";
 
 class FindAvatarUserController {
   async handle(req: Request, res: Response) {
-    try {
-      const { id } = req.params;
-      const findAvatarUserService = container.resolve(FindAvatarUserService);
-      const user = await findAvatarUserService.execute(id);
-      return res.sendFile(user.image);
-    } catch (err: any) {
-      return res.status(500).send(err.message);
-    }
+    const { id } = req.params;
+    const findAvatarUserService = container.resolve(FindAvatarUserService);
+    const user = await findAvatarUserService.execute(id);
+    return res.sendFile(user.image);
   }
 }
 

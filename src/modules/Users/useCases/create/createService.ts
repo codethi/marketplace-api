@@ -2,6 +2,7 @@ import { User } from "modules/Users/entities/User";
 import bcrypt from "bcrypt";
 import { IUserRepositories } from "modules/Users/repositories/IUserRepositories";
 import { inject, injectable } from "tsyringe";
+import { ConflitError } from "helpers/errors/apiErrors";
 
 @injectable()
 export class CreateService {
@@ -14,7 +15,7 @@ export class CreateService {
     const hashPassword = await bcrypt.hash(body.password, 10);
 
     const userExists = await this.userRepositories.findByEmail(body.email);
-    if (userExists) throw new Error("User already exists");
+    if (userExists) throw new ConflitError("User already exists");
 
     await this.userRepositories.create({ ...body, password: hashPassword });
   }

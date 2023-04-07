@@ -3,6 +3,7 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 import "dotenv/config";
 import { container } from "tsyringe";
 import { FindByIdService } from "modules/Users/useCases/finById/findByIdService";
+import { UnauthorizedError } from "helpers/errors/apiErrors";
 
 interface ITokenPayload extends JwtPayload {
   id: string;
@@ -11,27 +12,26 @@ interface ITokenPayload extends JwtPayload {
 class AuthMiddleware {
   execute(req: Request, res: Response, next: NextFunction) {
     const { authorization } = req.headers;
-    if (!authorization) return res.status(401).send("Invalid token!");
+    if (!authorization) throw new UnauthorizedError("Invalid token!");
     const secret = process.env.SECRET_JWT as string;
 
     const parts = authorization?.split(" ");
-    if (!parts.length) return res.status(401).send("Invalid token!");
-    if (parts.length !== 2) return res.status(401).send("Invalid token!");
+    if (!parts.length) throw new UnauthorizedError("Invalid token!");
+    if (parts.length !== 2) throw new UnauthorizedError("Invalid token!");
 
     const [schema, token] = parts;
     if (!/^Bearer$/i.test(schema))
-      return res.status(401).send("Invalid token!");
+      throw new UnauthorizedError("Invalid token!");
 
     jwt.verify(token, secret, async (err, decoded) => {
-      if (err) return res.status(401).send("Invalid token!");
-      if (!decoded) return res.status(401).send("Invalid token!");
-
-      const { id } = decoded as ITokenPayload;
-
       try {
+        if (err) throw new UnauthorizedError("Invalid token!");
+        if (!decoded) throw new UnauthorizedError("Invalid token!");
+
+        const { id } = decoded as ITokenPayload;
         const findByIdUserService = container.resolve(FindByIdService);
         const user = await findByIdUserService.execute(id);
-        if (!user) return res.status(401).send("Invalid token!");
+        if (!user) throw new UnauthorizedError("Invalid token!");
 
         res.locals.user = user;
 

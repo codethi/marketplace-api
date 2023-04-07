@@ -1,9 +1,11 @@
+import "express-async-errors";
 import "reflect-metadata";
 import "./helpers/container";
 import express, { json } from "express";
 import cors from "cors";
 import ConnectToMongoDb from "database";
 import router from "routes";
+import errorMiddleware from "middlewares/errorMiddleware";
 
 const app = express();
 ConnectToMongoDb.execute();
@@ -11,6 +13,7 @@ ConnectToMongoDb.execute();
 app.use(json());
 app.use(cors());
 app.use(router);
+app.use(errorMiddleware.execute);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server running in port: ${port}`));

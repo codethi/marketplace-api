@@ -1,3 +1,4 @@
+import { NotFoundError } from "helpers/errors/apiErrors";
 import { Address } from "modules/Users/entities/Address";
 import { IUserRepositories } from "modules/Users/repositories/IUserRepositories";
 import { inject, injectable } from "tsyringe";
@@ -11,13 +12,13 @@ export class RemoveAddressressService {
 
   async execute(userId: string, addressId: string): Promise<void> {
     const user = await this.userRepositories.findById(userId);
-    if (!user) throw new Error("User not found");
+    if (!user) throw new NotFoundError("User not found");
 
     const address = await this.userRepositories.findAddressById(
       addressId,
       userId
     );
-    if (!address) throw new Error("User not found");
+    if (!address) throw new NotFoundError("Address not found");
 
     await this.userRepositories.removeAddress(userId, addressId);
   }
