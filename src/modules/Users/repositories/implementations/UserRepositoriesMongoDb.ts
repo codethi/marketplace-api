@@ -35,7 +35,7 @@ export class UserRepositoriesMongoDb implements IUserRepositories {
   }
 
   async addNewAddress(userId: string, address: Address): Promise<void> {
-    await UserSchema.findOneAndUpdate(
+    await UserSchema.updateOne(
       {
         _id: userId,
       },
@@ -58,7 +58,7 @@ export class UserRepositoriesMongoDb implements IUserRepositories {
   }
 
   async removeAddress(userId: string, addressId: string): Promise<void> {
-    await UserSchema.findOneAndUpdate(
+    await UserSchema.updateOne(
       {
         _id: userId,
       },
@@ -73,7 +73,7 @@ export class UserRepositoriesMongoDb implements IUserRepositories {
   }
 
   async addFavoriteProduct(userId: string, productId: string): Promise<void> {
-    await UserSchema.findOneAndUpdate(
+    await UserSchema.updateOne(
       {
         _id: userId,
       },
@@ -101,7 +101,7 @@ export class UserRepositoriesMongoDb implements IUserRepositories {
     userId: string,
     productId: string
   ): Promise<void> {
-    await UserSchema.findOneAndUpdate(
+    await UserSchema.updateOne(
       {
         _id: userId,
       },
@@ -113,5 +113,9 @@ export class UserRepositoriesMongoDb implements IUserRepositories {
         },
       }
     );
+  }
+
+  async updateAvatar(id: string, avatar: string): Promise<void> {
+    await UserSchema.updateOne({ _id: id }, { $set: { image: avatar } });
   }
 }
