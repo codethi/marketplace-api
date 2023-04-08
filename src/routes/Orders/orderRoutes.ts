@@ -6,6 +6,7 @@ import { orderSchemmaJoi } from "modules/Orders/schemas/OrderSchemaJoi";
 import paginationMiddleware from "middlewares/paginationMiddleware";
 import findAllOrdersController from "modules/Orders/useCases/findAllOrders/findAllOrdersController";
 import findByIdOrderController from "modules/Orders/useCases/findByIdOrder/findByIdOrderController";
+import removeOrderController from "modules/Orders/useCases/removeOrder/removeOrderController";
 
 const orderRoutes = Router();
 
@@ -22,5 +23,6 @@ orderRoutes.get(
   findAllOrdersController.handle
 );
 orderRoutes.get("/:id", findByIdOrderController.handle);
+orderRoutes.delete("/:id", removeOrderController.handle);
 
 export default orderRoutes;

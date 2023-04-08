@@ -14,5 +14,8 @@ export class OrderRepositoriesMongoDb implements IOrderRepository {
   async findById(id: string): Promise<Order | null> {
     return await OrderSchema.findById(id);
   }
-  
+
+  async remove(id: string): Promise<void> {
+    await OrderSchema.deleteOne({ _id: id });
+  }
 }

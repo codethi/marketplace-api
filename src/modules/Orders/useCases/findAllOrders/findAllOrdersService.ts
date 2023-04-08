@@ -12,7 +12,7 @@ export class FindAllOrdersService {
 
   async execute(limit: number, offset: number): Promise<Order[]> {
     const orders = await this.orderRepository.findAll(limit, offset);
-    if (!orders) throw new NotFoundError("Carts not found!");
+    if (!orders.length) throw new NotFoundError("Orders not found!");
     return orders;
   }
 }
