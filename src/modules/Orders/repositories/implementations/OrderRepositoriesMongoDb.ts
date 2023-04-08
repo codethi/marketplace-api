@@ -18,4 +18,11 @@ export class OrderRepositoriesMongoDb implements IOrderRepository {
   async remove(id: string): Promise<void> {
     await OrderSchema.deleteOne({ _id: id });
   }
+
+  async updateStatus(id: string, concluded: boolean): Promise<void> {
+    await OrderSchema.updateOne(
+      { _id: id },
+      { $set: { concluded: !concluded } }
+    );
+  }
 }
