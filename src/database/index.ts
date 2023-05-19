@@ -7,10 +7,13 @@ class ConnectToMongoDb {
 
     try {
       await mongoose.connect(mongoUrl);
-      console.log("MONGODB CONECTADO");
     } catch (error: any) {
       console.log(error.message);
     }
+  }
+
+  async disconnect() {
+    await mongoose.disconnect();
   }
 }
 

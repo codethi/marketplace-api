@@ -1,13 +1,13 @@
 import { Router } from "express";
-import authMiddleware from "../../middlewares/authMiddleware";
-import validateSchemma from "../../middlewares/schemaValidationMiddleware";
-import createOrderController from "modules/Orders/useCases/createOrder/createOrderController";
-import { orderSchemmaJoi } from "modules/Orders/schemas/OrderSchemaJoi";
-import paginationMiddleware from "middlewares/paginationMiddleware";
-import findAllOrdersController from "modules/Orders/useCases/findAllOrders/findAllOrdersController";
-import findByIdOrderController from "modules/Orders/useCases/findByIdOrder/findByIdOrderController";
-import removeOrderController from "modules/Orders/useCases/removeOrder/removeOrderController";
-import updateStatusOrderController from "modules/Orders/useCases/updateStatusOrder/updateStatusOrderController";
+import authMiddleware from "@/middlewares/authMiddleware";
+import validateSchemma from "@/middlewares/schemaValidationMiddleware";
+import createOrderController from "@/modules/Orders/useCases/createOrder/createOrderController";
+import { orderSchemmaJoi } from "@/modules/Orders/schemas/OrderSchemaJoi";
+import paginationMiddleware from "@/middlewares/paginationMiddleware";
+import findAllOrdersController from "@/modules/Orders/useCases/findAllOrders/findAllOrdersController";
+import findByIdOrderController from "@/modules/Orders/useCases/findByIdOrder/findByIdOrderController";
+import removeOrderController from "@/modules/Orders/useCases/removeOrder/removeOrderController";
+import updateStatusOrderController from "@/modules/Orders/useCases/updateStatusOrder/updateStatusOrderController";
 
 const orderRoutes = Router();
 

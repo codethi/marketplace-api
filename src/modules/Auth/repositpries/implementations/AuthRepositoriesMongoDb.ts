@@ -1,5 +1,5 @@
-import { User } from "modules/Users/entities/User";
-import UserSchema from "modules/Users/schemas/UserSchema";
+import { User } from "@/modules/Users/entities/User";
+import UserSchema from "@/modules/Users/schemas/UserSchema";
 import { ObjectId } from "mongodb";
 import { IAuthRepositories } from "../IAuthRepositories";
 import "dotenv/config";

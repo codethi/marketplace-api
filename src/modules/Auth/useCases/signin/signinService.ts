@@ -1,8 +1,8 @@
-import { Auth } from "modules/Auth/entities/Auth";
-import { IAuthRepositories } from "modules/Auth/repositpries/IAuthRepositories";
+import { Auth } from "@/modules/Auth/entities/Auth";
+import { IAuthRepositories } from "@/modules/Auth/repositpries/IAuthRepositories";
 import { inject, injectable } from "tsyringe";
 import bcrypt from "bcrypt";
-import { ConflictError } from "helpers/errors/apiErrors";
+import { ConflictError } from "@/helpers/errors/apiErrors";
 
 @injectable()
 export class SigninService {

@@ -1,8 +1,8 @@
-import { User } from "modules/Users/entities/User";
+import { User } from "@/modules/Users/entities/User";
 import bcrypt from "bcrypt";
-import { IUserRepositories } from "modules/Users/repositories/IUserRepositories";
+import { IUserRepositories } from "@/modules/Users/repositories/IUserRepositories";
 import { inject, injectable } from "tsyringe";
-import { ConflictError } from "helpers/errors/apiErrors";
+import { ConflictError } from "@/helpers/errors/apiErrors";
 
 @injectable()
 export class CreateService {

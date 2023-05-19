@@ -1,6 +1,6 @@
-import { NotFoundError } from "helpers/errors/apiErrors";
-import { Address } from "modules/Users/entities/Address";
-import { IUserRepositories } from "modules/Users/repositories/IUserRepositories";
+import { NotFoundError } from "@/helpers/errors/apiErrors";
+import { Address } from "@/modules/Users/entities/Address";
+import { IUserRepositories } from "@/modules/Users/repositories/IUserRepositories";
 import { inject, injectable } from "tsyringe";
 
 @injectable()

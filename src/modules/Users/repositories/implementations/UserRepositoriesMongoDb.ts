@@ -1,7 +1,7 @@
-import { Product } from "modules/Products/entities/Product";
-import { Address } from "modules/Users/entities/Address";
-import { User } from "modules/Users/entities/User";
-import UserSchema from "modules/Users/schemas/UserSchema";
+import { Product } from "@/modules/Products/entities/Product";
+import { Address } from "@/modules/Users/entities/Address";
+import { User } from "@/modules/Users/entities/User";
+import UserSchema from "@/modules/Users/schemas/UserSchema";
 import { IUserRepositories } from "../IUserRepositories";
 
 export class UserRepositoriesMongoDb implements IUserRepositories {

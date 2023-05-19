@@ -1,24 +1,24 @@
 import { Router } from "express";
-import authMiddleware from "middlewares/authMiddleware";
-import paginationMiddleware from "middlewares/paginationMiddleware";
-import addAddressController from "modules/Users/useCases/addAddress/addAddressController";
-import addFavoriteProductController from "modules/Users/useCases/addFavoriteProduct/addFavoriteProductController";
-import createController from "modules/Users/useCases/create/createController";
-import deleteController from "modules/Users/useCases/delete/deleteController";
-import findByIdController from "modules/Users/useCases/finById/findByIdController";
-import findAllController from "modules/Users/useCases/findAll/findAllController";
-import removeAddressController from "modules/Users/useCases/removeAddress/removeAddressController";
-import removeFavoriteProductController from "modules/Users/useCases/removeFavoriteProduct/removeFavoriteProductController";
-import updateController from "modules/Users/useCases/update/updateController";
+import authMiddleware from "@/middlewares/authMiddleware";
+import paginationMiddleware from "@/middlewares/paginationMiddleware";
+import addAddressController from "@/modules/Users/useCases/addAddress/addAddressController";
+import addFavoriteProductController from "@/modules/Users/useCases/addFavoriteProduct/addFavoriteProductController";
+import createController from "@/modules/Users/useCases/create/createController";
+import deleteController from "@/modules/Users/useCases/delete/deleteController";
+import findByIdController from "@/modules/Users/useCases/finById/findByIdController";
+import findAllController from "@/modules/Users/useCases/findAll/findAllController";
+import removeAddressController from "@/modules/Users/useCases/removeAddress/removeAddressController";
+import removeFavoriteProductController from "@/modules/Users/useCases/removeFavoriteProduct/removeFavoriteProductController";
+import updateController from "@/modules/Users/useCases/update/updateController";
 
-import validateSchemma from "middlewares/schemaValidationMiddleware";
-import { UserSchemaJoi } from "modules/Users/schemas/joi/UserSchemaJoi";
-import { AddressSchemaJoi } from "modules/Users/schemas/joi/AddressSchemaJoi";
-import updateAvatarController from "modules/Users/useCases/updateAvatar/updateAvatarController";
+import validateSchemma from "@/middlewares/schemaValidationMiddleware";
+import { UserSchemaJoi } from "@/modules/Users/schemas/joi/UserSchemaJoi";
+import { AddressSchemaJoi } from "@/modules/Users/schemas/joi/AddressSchemaJoi";
+import updateAvatarController from "@/modules/Users/useCases/updateAvatar/updateAvatarController";
 
 import multer from "multer";
-import uploadConfig from "../../helpers/upload";
-import findAvatarUserController from "modules/Users/useCases/findAvatarUser/findAvatarUserController";
+import uploadConfig from "@/helpers/upload";
+import findAvatarUserController from "@/modules/Users/useCases/findAvatarUser/findAvatarUserController";
 
 const userRoutes = Router();
 const uploadAvatar = multer(uploadConfig.upload("./uploads/avatar"));

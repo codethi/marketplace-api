@@ -1,8 +1,6 @@
-import { User } from "modules/Users/entities/User";
-import { IUserRepositories } from "modules/Users/repositories/IUserRepositories";
+import { IUserRepositories } from "@/modules/Users/repositories/IUserRepositories";
 import { inject, injectable } from "tsyringe";
-import bcrypt from "bcrypt";
-import { NotFoundError } from "helpers/errors/apiErrors";
+import { NotFoundError } from "@/helpers/errors/apiErrors";
 
 @injectable()
 export class DeleteService {

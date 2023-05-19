@@ -1,7 +1,7 @@
-import { IUserRepositories } from "modules/Users/repositories/IUserRepositories";
+import { IUserRepositories } from "@/modules/Users/repositories/IUserRepositories";
 import { inject, injectable } from "tsyringe";
 import { User } from "../../entities/User";
-import { NotFoundError } from "helpers/errors/apiErrors";
+import { NotFoundError } from "@/helpers/errors/apiErrors";
 
 @injectable()
 export class FindAllService {
