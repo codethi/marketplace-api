@@ -6,7 +6,9 @@ import cors from "cors";
 import ConnectToMongoDb from "@/database";
 import router from "@/routes";
 import errorMiddleware from "@/middlewares/errorMiddleware";
+import loadEnvs from "@/helpers/env";
 
+loadEnvs();
 const app = express();
 
 app.use(json());
