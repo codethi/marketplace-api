@@ -33,6 +33,7 @@ userRoutes.get("/", paginationMiddleware.execute, findAllController.handle);
 userRoutes.get("/:id", findByIdController.handle);
 userRoutes.patch("/", updateController.handle);
 userRoutes.delete("/", deleteController.handle);
+
 userRoutes.post(
   "/add-address",
   validateSchemma.execute(AddressSchemaJoi),

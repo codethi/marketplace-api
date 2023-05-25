@@ -7,7 +7,7 @@ class FindAllController {
     const { limit, offset } = res.locals.pagination;
     const findAllService = container.resolve(FindAllService);
     const users = await findAllService.execute(limit, offset);
-    return res.send({ users });
+    return res.send(users);
   }
 }
 

@@ -12,6 +12,7 @@ interface ITokenPayload extends JwtPayload {
 class AuthMiddleware {
   execute(req: Request, res: Response, next: NextFunction) {
     const { authorization } = req.headers;
+
     if (!authorization) throw new UnauthorizedError("Invalid token!");
     const secret = process.env.SECRET_JWT as string;
 
@@ -37,7 +38,7 @@ class AuthMiddleware {
 
         return next();
       } catch (err: any) {
-        return res.status(500).send(err.message);
+        return next(err);
       }
     });
   }
