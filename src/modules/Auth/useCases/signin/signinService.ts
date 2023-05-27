@@ -1,5 +1,5 @@
 import { Auth } from "@/modules/Auth/entities/Auth";
-import { IAuthRepositories } from "@/modules/Auth/repositpries/IAuthRepositories";
+import { IAuthRepositories } from "@/modules/Auth/repositories/IAuthRepositories";
 import { inject, injectable } from "tsyringe";
 import bcrypt from "bcrypt";
 import { ConflictError } from "@/helpers/errors/apiErrors";
@@ -15,7 +15,7 @@ export class SigninService {
     const user = await this.authRepositories.findUserByEmail(data.email);
     if (!user) throw new ConflictError("Email or password invalid");
 
-    const passwordOk = await bcrypt.compare(data.password, user.password);
+    const passwordOk = bcrypt.compareSync(data.password, user.password);
     if (!passwordOk) throw new ConflictError("Email or password invalid");
 
     return this.authRepositories.generateToken(user._id);

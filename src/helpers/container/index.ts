@@ -3,8 +3,8 @@ import { container } from "tsyringe";
 import { UserRepositoriesMongoDb } from "../../modules/Users/repositories/implementations/UserRepositoriesMongoDb";
 import { IUserRepositories } from "../../modules/Users/repositories/IUserRepositories";
 
-import { AuthRepositoriesMongoDb } from "../../modules/Auth/repositpries/implementations/AuthRepositoriesMongoDb";
-import { IAuthRepositories } from "../../modules/Auth/repositpries/IAuthRepositories";
+import { AuthRepositoriesMongoDb } from "../../modules/Auth/repositories/implementations/AuthRepositoriesMongoDb";
+import { IAuthRepositories } from "../../modules/Auth/repositories/IAuthRepositories";
 
 import { CategoriesRepository } from "../../modules/Categories/repositories/implementations/CategoriesRepository";
 import { ICategoriesRepository } from "../../modules/Categories/repositories/ICategoriesRepository";

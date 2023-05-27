@@ -6,6 +6,7 @@ import { faker } from "@faker-js/faker";
 import { ObjectId } from "mongodb";
 import { dirname, join } from "path";
 import fs from "fs";
+import bcrypt from "bcrypt";
 
 export function createPathAndImage() {
   const __dirname = dirname(new URL(import.meta.url).pathname);
@@ -28,11 +29,29 @@ export function newUser() {
     admin: faker.datatype.boolean(),
   };
 }
+export const userToCreateDb = newUser();
 
 export async function createUserDb() {
-  const user = newUser();
-  const userDB = await UserSchema.create(user);
-  return userDB;
+  const userPasswordHashed = {
+    ...userToCreateDb,
+    password: await bcrypt.hash(userToCreateDb.password, 10),
+  };
+  const userDb = await UserSchema.create(userPasswordHashed);
+  return userDb;
+}
+
+export function mockCreateUserDb() {
+  return {
+    name: userToCreateDb.name,
+    email: userToCreateDb.email,
+    password: bcrypt.hashSync(userToCreateDb.password, 10),
+    image: userToCreateDb.image,
+    admin: userToCreateDb.admin,
+    created_at: new Date(),
+    _id: newRandomObjectId(),
+    addresses: [],
+    favorite_products: [],
+  };
 }
 
 export function newInvalidUserSchema() {
