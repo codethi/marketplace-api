@@ -3,8 +3,9 @@
     "target": "es2022",
     "module": "ES2020",
     "moduleResolution": "node",
-    "baseUrl": "src",
+    "baseUrl": "src/",
     "outDir": "./dist",
+    "rootDirs": ["src", "tests"],
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -22,5 +23,6 @@
   },
   "ts-node": {
     "esm": true
-  }
+  },
+  "include": ["src", "tests"]
 }
