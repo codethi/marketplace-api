@@ -2,9 +2,9 @@
 module.exports = {
   preset: "ts-jest",
   testEnvironment: "node",
-  transform: {
+  /* transform: {
     "^.+\\.ts$": "ts-jest",
-  },
+  }, */
   extensionsToTreatAsEsm: [".ts"],
   globals: {
     "ts-jest": {
