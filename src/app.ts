@@ -9,6 +9,7 @@ import errorMiddleware from "@/middlewares/errorMiddleware";
 import loadEnvs from "@/helpers/env";
 
 loadEnvs();
+
 const app = express();
 
 app.use(json());
