@@ -33,7 +33,7 @@ export class SigninGithubService {
         userEmail
       );
 
-      userId = newUser?._id!;
+      userId = newUser?._id as ObjectId;
     }
 
     const token = this.authRepositories.generateToken(userId);

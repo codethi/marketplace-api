@@ -3,6 +3,7 @@ import { IAuthRepositories } from "@/modules/Auth/repositories/IAuthRepositories
 import { inject, injectable } from "tsyringe";
 import bcrypt from "bcrypt";
 import { ConflictError } from "@/helpers/errors/apiErrors";
+import { ObjectId } from "mongodb";
 
 @injectable()
 export class SigninService {
@@ -18,6 +19,6 @@ export class SigninService {
     const passwordOk = bcrypt.compareSync(data.password, user.password);
     if (!passwordOk) throw new ConflictError("Email or password invalid");
 
-    return this.authRepositories.generateToken(user._id);
+    return this.authRepositories.generateToken(user._id as ObjectId);
   }
 }

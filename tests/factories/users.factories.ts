@@ -29,9 +29,11 @@ export function newUser() {
     admin: faker.datatype.boolean(),
   };
 }
+
 export const userToCreateDb = newUser();
 
 export async function createUserDb() {
+  const userToCreateDb = newUser();
   const userPasswordHashed = {
     ...userToCreateDb,
     password: await bcrypt.hash(userToCreateDb.password, 10),
