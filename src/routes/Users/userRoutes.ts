@@ -16,12 +16,12 @@ import { UserSchemaJoi } from "@/modules/Users/schemas/joi/UserSchemaJoi";
 import { AddressSchemaJoi } from "@/modules/Users/schemas/joi/AddressSchemaJoi";
 import updateAvatarController from "@/modules/Users/useCases/updateAvatar/updateAvatarController";
 
-import multer from "multer";
-import uploadConfig from "@/helpers/upload";
+//import multer from "multer";
+//import uploadConfig from "@/helpers/upload";
 import findAvatarUserController from "@/modules/Users/useCases/findAvatarUser/findAvatarUserController";
 
 const userRoutes = Router();
-const uploadAvatar = multer(uploadConfig.upload("./uploads/avatar"));
+//const uploadAvatar = multer(uploadConfig.upload("./uploads/avatar"));
 
 userRoutes.post(
   "/",
@@ -50,7 +50,7 @@ userRoutes.delete(
 );
 userRoutes.patch(
   "/avatar",
-  uploadAvatar.single("avatar"),
+  //uploadAvatar.single("avatar"),
   updateAvatarController.handle
 );
 

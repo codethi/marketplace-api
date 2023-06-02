@@ -11,17 +11,17 @@ import findByIdProductController from "@/modules/Products/useCases/findProductBy
 import removeCategoryController from "@/modules/Products/useCases/removeCategory/removeCategoryController";
 import removeProductController from "@/modules/Products/useCases/removeProduct/removeProductController";
 import updateProductController from "@/modules/Products/useCases/updateProduct/updateProductController";
-import multer from "multer";
-import uploadConfig from "@/helpers/upload";
+//import multer from "multer";
+//import uploadConfig from "@/helpers/upload";
 
 const productRouter = Router();
-const uploadProductImage = multer(uploadConfig.upload("./tmp/productImage"));
+//const uploadProductImage = multer(uploadConfig.upload("./tmp/productImage"));
 
 productRouter.use(authMiddleware.execute);
 
 productRouter.post(
   "/",
-  uploadProductImage.single("image"),
+  //uploadProductImage.single("image"),
   schemaValidationMiddleware.execute(productSchemmaJoi),
   createProductController.handle
 );
@@ -32,7 +32,7 @@ productRouter.get("/:id", findByIdProductController.handle);
 
 productRouter.patch(
   "/:id",
-  uploadProductImage.single("image"),
+  //uploadProductImage.single("image"),
   updateProductController.handle
 );
 

@@ -6,7 +6,6 @@ import "dotenv/config";
 import jwt from "jsonwebtoken";
 import { IParamsGithubToken } from "../../interfaces/IParamsGitHubToken";
 import axios from "axios";
-import qs from "query-string";
 import { IUserGihtub } from "../../interfaces/IUserGithub";
 import { UserRepositoriesMongoDb } from "@/modules/Users/repositories/implementations/UserRepositoriesMongoDb";
 import { CreateService } from "@/modules/Users/useCases/create/createService";
@@ -29,7 +28,7 @@ export class AuthRepositoriesMongoDb implements IAuthRepositories {
       },
     });
 
-    const parseData = qs.parse(data);
+    const parseData = Object.fromEntries(new URLSearchParams(data));
     const token = parseData.access_token as string;
     return token;
   }

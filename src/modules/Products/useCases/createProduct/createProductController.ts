@@ -5,10 +5,10 @@ import { CreateProductService } from "./createProductService";
 class CreateProductController {
   async handle(req: Request, res: Response): Promise<Response | undefined> {
     const body = req.body;
-    const image = req.file?.path as string;
-    const data = { ...body, image };
+    //const image = req.file?.path as string;
+    //const data = { ...body, image };
     const createProductService = container.resolve(CreateProductService);
-    await createProductService.execute(data);
+    await createProductService.execute(body);
     return res.sendStatus(201);
   }
 }
