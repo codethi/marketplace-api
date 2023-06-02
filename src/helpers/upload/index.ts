@@ -4,7 +4,7 @@ import { v4 as uuidV4 } from "uuid";
 
 export default {
   upload(folder: string) {
-    const __dirname = dirname(__filename);
+    const __dirname = dirname(process.cwd());
 
     return {
       storage: multer.diskStorage({

@@ -9,7 +9,7 @@ import fs from "fs";
 import bcrypt from "bcrypt";
 
 export function createPathAndImage() {
-  const __dirname = dirname(new URL(import.meta.url).pathname);
+  const __dirname = dirname(process.cwd());
   const folderPath = join(__dirname, "images");
   if (!fs.existsSync(folderPath)) fs.mkdirSync(folderPath);
   const imageName = "testImage.jpg";
